@@ -1,0 +1,23 @@
+<%- include('../partials/header.ejs') %> 
+
+    <div class="container mt-5 galleries">
+        <h2>All Photo</h2>
+        <hr>
+        <div class="row">
+            <% photos.map((element)=>{ %> 
+                <div class="col-md-3">                    
+                    <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <a data-lightbox="mygallery" href="/uploads/<%= element.filename %> "><img class="activator" src="/uploads/<%= element.filename %>"></a>
+                        </div>
+                        <!-- <div class="card-action">
+                            <button class="btn-small waves-effect pink darken-1 left">Like</button>
+                            <button class="btn-small waves-effect grey darken-1 right">star</button>
+                        </div> -->
+                    </div>            
+                </div>
+            <% }) %>                            
+        </div>
+    </div>
+    
+<%- include('../partials/footer.ejs') %> 

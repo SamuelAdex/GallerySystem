@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AduksGallery | Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="/materialize/css/style.css">
+    <link rel="stylesheet" href="/materialize/css/materialize.min.css">
+    <link rel="stylesheet" href="/lightbox2-2.11.3/src/css/lightbox.css">
+        
+</head>
+<style>
+    button a{
+        text-decoration: none;
+        color: whitesmoke;
+        cursor: pointer;
+    }
+</style>
+<body>
+    <header>        
+        <nav>
+            <div class="nav-wrapper pink darken-4">
+            <a href="#!" class="brand-logo">AduksGallery</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fa fa-align-justify">M</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="/">Home</a></li>
+                <% if(permission){ %> 
+                    <li><a href="/gallery/create_gallery">Create Gallery</a></li>
+                <% } %> 
+                <li><a href="/gallery/galleries">All Gallery</a></li>
+                <li><a href="/gallery/photos">All Photo</a></li>
+                <% if(permission){ %> 
+                    <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Dropdown<i class="fa fa-arrow right"></i></a></li>                    
+                    <ul id="dropdown1" class="dropdown-content">
+                        <li><a href="#!">one</a></li>
+                        <li><a href="#!">two</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#!">three</a></li>
+                    </ul>
+                <% } %> 
+            </ul>
+            </div>
+        </nav>
+
+        <ul class="sidenav" id="mobile-demo">
+            <li><a href="/">Home</a></li>
+            <% if(permission){ %> 
+                <li><a href="/gallery/create_gallery">Create Gallery</a></li>
+            <% } %> 
+            <li><a href="/gallery/galleries">All Gallery</a></li>
+            <li><a href="/gallery/photos">All Photo</a></li>
+            <% if(permission){ %> 
+                <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Dropdown<i class="fa fa-arrow right"></i></a></li>                    
+                <ul id="dropdown1" class="dropdown-content">
+                    <li><a href="#!">one</a></li>
+                    <li><a href="#!">two</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#!">three</a></li>
+                </ul>
+            <% } %> 
+        </ul>          
+    </header>
+
+
+    <div class="showcase pink lighten-5">
+        <div class="container">
+            <div class="row">
+                <div class="col m6">
+                    <div class="container AuthShowcase">
+                        <h4 class="black-text text-lighten-2"><strong><b>CREATE, UPLOAD, LIKE & SAVE 🤩🤩🤩🤩🤩🤩🤩</b></strong></h4>
+                        <p class="pink-text text-darken-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequatur atque fugiat et recusandae aperiam maxime molestiae saepe cupiditate deserunt! Illo explicabo qui nisi officiis impedit vel sed repellat corrupti facilis?</p>
+                        <button class="btn-small waves-effect pulse pink darken-3 btn-block"><a href="/user/register">GET STARTED</a></button>
+                        <button class="btn-small waves-effect grey btn-block"><a href="/user/login">LOGIN</a></button>
+                    </div><br>
+                </div>
+                <div class="col m6"><br>
+                    <div class="sliderShow hide-on-small-and-down">                        
+                        <div class="slider">
+                            <ul class="slides">
+                            <li>
+                                <img src="./img/brooke-cagle-ykQ0-7dRvmI-unsplash.jpg"> <!-- random image -->
+                                <div class="caption center-align">
+                                </div>
+                            </li>
+                            <li>
+                                <img src="./img/dan-ROJFuWCsfmA-unsplash.jpg"> <!-- random image -->
+                                <div class="caption left-align">
+                                </div>
+                            </li>
+                            <li>
+                                <img src="./img/fezbot2000-MA7VYLQ_9ao-unsplash.jpg"> <!-- random image -->
+                                <div class="caption right-align">
+                                </div>
+                            </li>
+                            <li>
+                                <img src="./img/freestocks-_3Q3tsJ01nc-unsplash.jpg"> <!-- random image -->
+                                <div class="caption center-align">
+                                </div>
+                            </li>
+                            </ul>
+                        </div>      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="search-show pink darken-4">
+        <div class="container">
+            <form action="">
+                <div class="input-field">                    
+                    <input type="text" class="" name="" placeholder="e.g: Fashion, Travel, Sport etc..." id="">                    
+                    <button type="submit" class="btn-small waves-effect pink darken-1 ">Search</button>
+                </div>                
+            </form>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="row">
+            <div class="center gallery-system"><h1 class="white-text waves-effect pink darken-4">GALLERY SYSTEM</h1></div>
+            <div class="col m4">
+                <div class="text-sample center">
+                    <h4>Your Gallery</h4>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora minus error minima itaque odit id magnam distinctio quia earum, incidunt temporibus unde repudiandae, ad praesentium quisquam nobis maiores. Suscipit, non?</p>
+                </div>
+            </div>
+            <div class="col m4">
+                <div class="text-sample center">
+                    <h4>Your Photos</h4>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora minus error minima itaque odit id magnam distinctio quia earum, incidunt temporibus unde repudiandae, ad praesentium quisquam nobis maiores. Suscipit, non?</p>
+                </div>
+            </div>
+            <div class="col m4">
+                <div class="text-sample center">
+                    <h4>Your Files</h4>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora minus error minima itaque odit id magnam distinctio quia earum, incidunt temporibus unde repudiandae, ad praesentium quisquam nobis maiores. Suscipit, non?</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col m12">
+                <div class="sliderShow hide-on-small-and-down">                        
+                    <div class="slider">
+                        <ul class="slides">
+                        <li>
+                            <img src="./img/brooke-cagle-ykQ0-7dRvmI-unsplash.jpg"> <!-- random image -->
+                            <div class="caption center-align">
+                            </div>
+                        </li>
+                        <li>
+                            <img src="./img/dan-ROJFuWCsfmA-unsplash.jpg"> <!-- random image -->
+                            <div class="caption left-align">
+                            </div>
+                        </li>
+                        <li>
+                            <img src="./img/fezbot2000-MA7VYLQ_9ao-unsplash.jpg"> <!-- random image -->
+                            <div class="caption right-align">
+                            </div>
+                        </li>
+                        <li>
+                            <img src="./img/freestocks-_3Q3tsJ01nc-unsplash.jpg"> <!-- random image -->
+                            <div class="caption center-align">
+                            </div>
+                        </li>
+                        </ul>
+                    </div>      
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-show">
+        <div class="row">
+            <div class="col m6">
+                <img src="./img/fezbot2000-MA7VYLQ_9ao-unsplash.jpg" alt="">
+            </div>
+            <div class="col m6">
+                <p class="grey-text">DIGITAL DELIVERY</p>
+                <h3>Deliver via <span class="pink-text text-darken-3">Download</span></h3>
+                <p>Allow clients to download their photos directly from your professional gallery.</p>
+                <div class="row">
+                    <div class="col m6">
+                        <i class="fa fa-good pink-text text-darken-3"></i><span>Fast & Secure</span>
+                    </div>
+                    <div class="col m6">
+                        <span>Full control sizes</span>
+                    </div>
+                    <div class="col m6">
+                        <span>Track Who and When</span>
+                    </div>
+                    <div class="col m6">
+                        <span>Delivery to / from anywhere</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col m6">
+                <div class="proofing">
+                    <p class="grey-text">ONLINE PROOFING</p>
+                    <h3><span class="pink-text text-darken-3">Favourite </span>Way to Proof</h3>
+                    <p>Speed up your online proofing workflow with the Favourite system.</p>
+                    <div class="row">
+                        <div class="col m6">
+                            <i class="fa fa-good pink-text text-darken-3"></i><span>Fast & Secure</span>
+                        </div>
+                        <div class="col m6">
+                            <span>Full control sizes</span>
+                        </div>
+                        <div class="col m6">
+                            <span>Track Who and When</span>
+                        </div>
+                        <div class="col m6">
+                            <span>Delivery to / from anywhere</span>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+            <div class="col m6">
+                <img src="./img/freestocks-_3Q3tsJ01nc-unsplash.jpg" alt="">
+            </div>
+        </div>
+    </div>
+<%- include('./partials/footer.ejs') %>

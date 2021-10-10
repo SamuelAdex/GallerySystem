@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AduksGallery | Gallery</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="/materialize/css/style.css">
+    <link rel="stylesheet" href="/materialize/css/materialize.css">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/lightbox2-2.11.3/src/css/lightbox.css">
+    <link rel="stylesheet" href="/filepond-master/dist/filepond.css">
+    <link rel="stylesheet" href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css">
+    <script defer src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
+    <script defer src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+    <script defer src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
+    <script defer src="https://unpkg.com/filepond-plugin-image-transform/dist/filepond-plugin-image-transform.js"></script>
+    <script defer src="/filepond-master/dist/filepond.js"></script>
+    <script defer src="/materialize/js/filepond.js"></script>
+</head>
+<style>
+    button a{
+        text-decoration: none;
+        color: whitesmoke;
+        cursor: pointer;
+    }
+</style>
+<body>
+    <header>        
+        <nav>
+            <div class="nav-wrapper pink darken-4">
+                <a href="#!" class="brand-logo">AduksGallery</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fa fa-align-justify">M</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="/">Home</a></li>
+                    <% if(permission){ %>
+                        <li><a href="/gallery/create_gallery">Create Gallery</a></li>
+                    <% } %> 
+                    <li><a href="/gallery/galleries">All Gallery</a></li>
+                    <li><a href="/gallery/photos">All Photo</a></li>
+                    <% if(permission){ %>
+                        <li><a class="dropdown-trigger" href="#!" data-target="dropdown2"><%= user.displayName %><i class="fa fa-arrow right"></i></a></li>                    
+                        <ul id="dropdown2" class="dropdown-content">
+                            <li><a href="/gallery/dashboard" class="black-text">Dashboard</a></li>
+                            <li><a href="/user/profile/<%= user._id %> " class="black-text">Edit Profile</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/auth/logout" class="black-text">Logout</a></li>
+                        </ul>
+                    <% } %>
+                </ul>  
+            </div>
+        </nav>
+
+        <ul class="sidenav" id="mobile-demo">
+            <li><a href="/">Home</a></li>
+            <% if(permission){ %>
+                <li><a href="/gallery/create_gallery">Create Gallery</a></li>
+            <% } %>
+            <li><a href="/gallery/galleries">All Gallery</a></li>
+            <li><a href="/gallery/photos">All Photo</a></li>
+            <% if(permission){ %>                     
+                <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"><%= user.displayName %><i class="fa fa-arrow right"></i></a></li>                    
+                <ul id="dropdown1" class="dropdown-content black-text">
+                    <li><a href="/gallery/dashboard" class="black-text">Dashboard</a></li>
+                    <li><a href="/user/profile/<%= user._id %> " class="black-text">Edit Profile</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/auth/logout" class="black-text">Logout</a></li>
+                </ul>
+            <% } %>
+        </ul>          
+    </header>

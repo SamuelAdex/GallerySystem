@@ -1,0 +1,111 @@
+*{
+    box-sizing: border-box
+}
+
+header .nav-wrapper a{
+    text-decoration: none;
+
+}
+header .nav-wrapper a:hover{
+    color: rgb(245, 46, 79);
+
+}
+header .nav-wrapper .brand-logo{
+    margin-left: 20px;
+}
+
+
+/*Gallery Design*/
+.modal{
+    opacity: 0.9;
+}
+.gallery a{
+    text-decoration: none;
+    color: white;
+}
+
+/*Index design*/
+.showcase .row{
+    padding: 18px;
+    height: 100%;
+}
+.search-show{
+    margin-top: -20px;
+    padding: 2px 0px 2px 0px;
+}
+.search-show input{
+    border-bottom: rgb(255, 158, 174);
+}
+.gallery-system h1{
+    padding: 19px;
+}
+
+.side-show img{
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.side-show .m6{
+    line-height: 400%;
+}
+.side-show .proofing{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.text-sample{
+    padding: 5px;
+    box-shadow: 4px 1px 1px 4px whitesmoke;
+}
+.location{
+    color: whitesmoke;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+
+
+/*Galleries Design*/
+.galleries .card a{
+    text-decoration: none;
+}
+.galleries .card a:hover{
+    color:rgb(255, 158, 174);
+    text-transform: lowercase;
+}
+
+
+/* Login Styles */
+.login a{
+    text-decoration: none;
+    
+}
+
+
+
+/*footer*/
+.footer{
+    padding: 20px;
+}
+.footer .list{
+    color: whitesmoke;
+}
+.footer .list .list-item{
+    color: whitesmoke;
+    font-size: 10pt;
+}
+.footer .list a{
+    color: whitesmoke;
+}
+.footer .list a:hover{
+    color: rgb(255, 158, 174);
+    
+}
+.footer .list-item:hover{
+    color:rgb(255, 158, 174);
+    cursor: pointer;
+}
+.footer .ack{
+    color: whitesmoke;
+    line-height: 8px;
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="/materialize/css/style.css">
+    <link rel="stylesheet" href="/materialize/css/materialize.min.css">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/lightbox2-2.11.3/src/css/lightbox.css">
+</head>
+<style>
+    .nav-wrapper a{
+        text-decoration: none;
+        color:whitesmoke;
+    }
+    .card{
+        border-bottom: 3px solid black;
+    }
+</style>
+<body>
+    <nav class="grey darken-4">
+        <div class="nav-wrapper container">
+            <a href="#" class="brand-logo center font-weight-bold">ADMIN  Dashboard</a>
+            <a href="#" data-target="mobile-demo"\ class="sidenav-trigger show-on-large"><i class="fa fa-align-justify">M</i></a>
+            <ul class="sidenav" id="mobile-demo">
+                <li><a href="/admin/dashboard">Dashboard</a></li>
+                <li><a href="/admin/users">Users</a></li>
+                <li><a href="/admin/galleries">Galleries</a></li>
+                <li><a href="/auth/logout">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container"><br>
+        <%- include('../partials/message.ejs') %> 
+        <h1>Dashboard</h1>
+        <div class="divider"></div><br>
+        
+        <div class="row text-center">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-content">
+                        <h1 class="font-weight-bolder"><%= user.length %></h1> 
+                        <h4>USERS</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-content">
+                        <h1 class="font-weight-bolder"><%= gallery.length %></h1>
+                        <h4>GALLERIES</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-content">
+                        <h1 class="font-weight-bolder"><%= photo.length %></h1>
+                        <h4>PHOTOS</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/bootstrap/js/Jquery.js"></script>
+    <script src="/bootstrap/js/bootstrap.js"></script>
+    <script src="/materialize/js/materialize.min.js"></script>
+    <script src="/materialize/js/script.js"></script>
+    <script src="/lightbox2-2.11.3/dist/js/lightbox.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin | Gallery</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../materialize/css/style.css">
+    <link rel="stylesheet" href="../materialize/css/materialize.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+</head>
+<style>
+    .login a{
+        text-decoration: none;
+        color: black;
+    }
+</style>
+<body>
+    <div class="container mt-xl-5">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-lg-4 col-md-4">
+                <div class="card">
+                    <div class="card-content center-align login">
+                        <h1><a href="/">Admin Log-In</a></h1><br>
+                        <div class="divider"></div>                        
+                        <%- include('../partials/message.ejs') %> 
+                        <form action="/admin/login" method="POST">                            
+                            <div class="input-field">
+                                <input type="email" name="email" required>
+                                <label for="Email">Email</label>
+                            </div>
+                            <div class="input-field">
+                                <input type="password" name="password" required>
+                                <label for="Password">Password</label>
+                            </div>
+                            <button type="submit" class="btn btn-block pink darken-4 waves-effect white-text">Login</button>
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+
+    <script src="../materialize/js/Jquery.js"></script>
+    <script src="../materialize/js/materialize.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <script src="../materialize/js/script.js"></script>
+</body>
+</html>

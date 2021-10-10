@@ -1,0 +1,33 @@
+<%- include('../partials/header.ejs') %> 
+
+    <div class="container mt-5 galleries">
+        <h2>All Gallery</h2>
+        <hr>
+        <div class="row center">
+            <% if(galleries.length > 0){ %> 
+                <% galleries.forEach((gallery)=>{ %> 
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="card-title"><%= gallery.galleryName %> </div>
+                                <% gallery.user.map(use =>{ %> 
+                                    <p class="pink-text text-darken-1"><small class="font-weight-bolder"><%= use.displayName %> </small></p>
+                                <% }) %> 
+                                <a href="/gallery/gallery/<%= gallery.slug %> " class="btn-small waves-effect pink darken-4">View</a>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %> 
+            <% }else{ %> 
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <strong>No Gallery Available Now!!!<strong>
+                </div>
+            <% } %>            
+        </div>
+    </div>
+    
+<%- include('../partials/footer.ejs') %>

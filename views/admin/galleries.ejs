@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Galleries</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="/materialize/css/style.css">
+    <link rel="stylesheet" href="/materialize/css/materialize.css">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/lightbox2-2.11.3/src/css/lightbox.css">
+</head>
+<style>
+    .nav-wrapper a{
+        text-decoration: none;
+        color:whitesmoke;
+    }
+    .card{
+        border-bottom: 3px solid black;
+    }
+</style>
+<body>
+    <nav class="grey darken-4">
+        <div class="nav-wrapper container">
+            <a href="#" class="brand-logo center font-weight-bold">ADMIN  Dashboard</a>
+            <a href="#" data-target="mobile-demo"\ class="sidenav-trigger show-on-large"><i class="fa fa-align-justify">M</i></a>
+            <ul class="sidenav" id="mobile-demo">
+                <li><a href="/admin/dashboard">Dashboard</a></li>
+                <li><a href="/admin/users">Users</a></li>
+                <li><a href="/admin/galleries">Galleries</a></li>
+                <li><a href="/auth/logout">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container"><br>
+        <%- include('../partials/message.ejs') %> 
+        <h1>All Galleries</h1>
+        <div class="divider"></div><br>
+        
+        <div class="clearfix">
+            <div class="float-left">
+                <input type="text" class="form-control" id="myInput" placeholder="Search User">
+            </div>            
+        </div><br>
+        
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Gallery</th>
+                        <th>Created By</th>
+                        <th>created At</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody id="myTable">
+                    <% if(galleries.length > 0){ %> 
+                        <% galleries.forEach(gallery =>{ %>
+                            <tr id="">
+                                <td><%= gallery.galleryName %> </td>
+                                <% gallery.user.forEach(user =>{ %> 
+                                    <td><%= user.displayName %> </td>
+                                <% }) %> 
+                                <td><%= gallery.createdAt.toLocaleString() %> </td>
+                                
+                                <td>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-dark btn-sm" data-toggle="modal" data-target="#EmodelId<%=gallery.id%>">
+                                      edit
+                                    </button>
+                                    
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="EmodelId<%=gallery.id%>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Edit <%= gallery.galleryName %> gallery</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                <div class="modal-body">
+                                                    <form action="/admin/editGallery/<%= gallery._id %>?_method=PUT " method="POST">
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <div class="input-field">
+                                                                    <input type="text" name="galleryName" value="<%= gallery.galleryName %> ">
+                                                                    <label for="Gallery">Gallery</label>
+                                                                </div>                                    
+                                                            </div>
+                                                        </div>
+                                                        <button type="submit" class="btn btn-block black waves-effect white-text">Update</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <script>
+                                        $('#exampleModal').on('show.bs.modal', event => {
+                                            var button = $(event.relatedTarget);
+                                            var modal = $(this);
+                                            // Use above variables to manipulate the DOM
+                                            
+                                        });
+                                    </script>
+                                </td>
+                                <td>
+                                    <form action="/admin/delGallery/<%= gallery._id%>?_method=DELETE" method="POST">
+                                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <% }) %> 
+                    <% }else{ %> 
+                        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                <span class="sr-only">Close</span>
+                            </button>
+                            <strong>No User Available Yet!!!</strong>
+                        </div>
+                    <% } %> 
+                </tbody>
+            </table>
+            
+        </div>
+    </div>
+    <script src="/bootstrap/js/Jquery.js"></script>
+    <script src="/bootstrap/js/bootstrap.js"></script>
+    <script src="/materialize/js/materialize.min.js"></script>
+    <script src="/materialize/js/script.js"></script>
+    <script src="/lightbox2-2.11.3/dist/js/lightbox.js"></script>
+</body>
+</html>

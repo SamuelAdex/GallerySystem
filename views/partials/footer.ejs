@@ -1,0 +1,77 @@
+<style>
+    #map {
+        height: 100%;
+    }
+</style>
+<footer class="footer pink darken-4">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col m3">                    
+                <ul class="list">
+                    <p><b>References</b></p>
+                    <li class="list-item">Email: adexsamuel6@gmail.com</li>
+                    <li class="list-item">Phone: +2349058944467</li>
+                    <li class="list-item">Location: Oregun, Ikeja Lagos Nigeria</li>
+                </ul>
+            </div>
+            <div class="col m3">
+                <ul class="list">
+                    <p><b>Quick Links</b></p>
+                    <li class="list-item"><a href="#">Home</a></li>                        
+                    <li class="list-item"><a href="#">All gallery</a></li>                        
+                    <li class="list-item"><a href="#">All Photos</a></li>                        
+                    <li class="list-item"><a href="#">About</a></li>                       
+                </ul>
+            </div>
+            <div class="col m6">
+                <div class="location">
+                    <div class="center-align">
+                        <button class="btn grey btn-block" id="location-button">My Location</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="divider"></div><br>
+        <div class="center ack">
+            <p>Copyright &copy2021 Reserved</p>
+            <small>Deigned & Developed By 🙂🙂 Olaleye Samuel Adeshina</small>
+        </div>
+    </div>
+</footer>
+
+<script src="/bootstrap/js/Jquery.js"></script>
+<script src="/bootstrap/js/bootstrap.js"></script>
+<script src="/materialize/js/materialize.min.js"></script>
+<script src="/materialize/js/script.js"></script>
+<script src="/lightbox2-2.11.3/dist/js/lightbox.js"></script>
+
+
+<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhqoc00JIPfRN7_IVi7vvmjIx2jilXQWI&callback=initMap"></script> -->
+<script>
+        /*$("#location-button").click(function(){
+        if(navigator.geolocation){
+            navigator.geolocation.getCurrentPosition(function(position){
+                $.ajax({
+                    type: 'GET',
+                    url: 'https://maps.googleapis.com/maps/api/geocode/json?latlng='+ position.coords.latitude + ","+ position.coords.longitude + "&sensor=false",
+                    dataType: 'json',
+                    headers: {
+                        'Access-Control-Allow-Origin':  '*',
+                        'Access-Control-Allow-Headers': '*'
+                    },
+                    crossDomain: true,    
+                    jsonpCallback:"callback", 
+                    contentType: "application/json; charset=utf-8",
+                    success: function(data){
+                        console.log(data)
+                    }
+                })
+                console.log(position);
+            })
+        }else{
+            console.log("Invalid Location")
+        }
+    });*/
+</script>
+</body>
+</html>

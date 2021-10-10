@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Update</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="/materialize/css/style.css">
+    <link rel="stylesheet" href="/materialize/css/materialize.min.css">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+</head>
+<style>
+    .login a{
+        text-decoration: none;
+        color: black;
+    }
+</style>
+<body>
+    <div class="container mt-xl-2">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-content center-align login">
+                        <h2 class="font-weight-bold"><a href="/">Update <%= user.lastName %> Details</a></h2>                      
+                        
+                        <%- include('../partials/message.ejs') %> 
+                        <div class="divider"></div>
+                        
+                        <form action="/user/update/<%= user._id %>?_method=PUT" method="POST">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="input-field">
+                                        <input type="text" name="firstName" value="<%= user.firstName %> ">
+                                        <label for="Firstname">Firstname</label>
+                                    </div>                                    
+                                </div>
+                                <div class="col-6">
+                                    <div class="input-field">
+                                        <input type="text" name="lastName" value="<%= user.lastName %>">
+                                        <label for="Lastname">Lastname</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="input-field">
+                                <input type="email" name="email" value="<%= user.email %>">
+                                <label for="Email">Email</label>
+                            </div>
+                            <div class="input-field">
+                                <input type="text" name="displayName" value="<%= user.displayName %>">
+                                <label for="Username">Username</label>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="input-field">
+                                        <input type="text" name="password">
+                                        <label for="Password">Password</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-block black waves-effect white-text">Update</button>
+                        </form>         
+                        <small>Back To <a href="/gallery/create_gallery" class="pink-text text-dark-4">gallery</a></small>              
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+
+    <script src="/materialize/js/Jquery.js"></script>
+    <script src="/materialize/js/materialize.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/materialize/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="/materialize/css/style.css">
+    <link rel="stylesheet" href="/materialize/css/materialize.css">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/lightbox2-2.11.3/src/css/lightbox.css">
+</head>
+<style>
+    .nav-wrapper a{
+        text-decoration: none;
+        color:whitesmoke;
+    }
+    .card{
+        border-bottom: 3px solid black;
+    }
+</style>
+<body>
+    <nav class="grey darken-4">
+        <div class="nav-wrapper container">
+            <a href="#" class="brand-logo center font-weight-bold">ADMIN  Dashboard</a>
+            <a href="#" data-target="mobile-demo"\ class="sidenav-trigger show-on-large"><i class="fa fa-align-justify">M</i></a>
+            <ul class="sidenav" id="mobile-demo">
+                <li><a href="/admin/dashboard">Dashboard</a></li>
+                <li><a href="/admin/users">Users</a></li>
+                <li><a href="/admin/galleries">Galleries</a></li>
+                <li><a href="/auth/logout">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container"><br>
+        <%- include('../partials/message.ejs') %> 
+        <h1>All Users</h1>
+        <div class="divider"></div><br>
+        
+        <div class="clearfix">
+            <div class="float-left">
+                <input type="text" class="form-control" id="myInput" placeholder="Search User">
+            </div>
+            <div class="float-right">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-dark btn-md font-weight-bold" data-toggle="modal" data-target="#modelId">
+              Add New User
+            </button>
+            
+            <!-- Modal -->
+            <div class="container modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-header bg-light text-dark">
+                        <div class="modal-title font-weight-bolder">ADD NEW USER</div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>   
+                    <div class="modal-content">
+                        <form action="/admin/register" method="POST">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="input-field">
+                                        <input type="text" name="firstName">
+                                        <label for="Firstname">Firstname</label>
+                                    </div>                                    
+                                </div>
+                                <div class="col-6">
+                                    <div class="input-field">
+                                        <input type="text" name="lastName">
+                                        <label for="Lastname">Lastname</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="input-field">
+                                <input type="email" name="email">
+                                <label for="Email">Email</label>
+                            </div>
+                            <div class="input-field">
+                                <input type="text" name="displayName">
+                                <label for="Username">Username</label>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="input-field">
+                                        <input type="password" name="password">
+                                        <label for="Password">Password</label>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="input-field">
+                                        <input type="password" name="password1">
+                                        <label for="Password1">Confirm Password</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-block pink darken-4 waves-effect white-text">Register</button>
+                        </form>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div><br>
+        
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Firstname</th>
+                        <th>Lastname</th>
+                        <th>Email</th>
+                        <th>View</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody id="myTable">
+                    <% if(users.length > 0){ %> 
+                        <% users.forEach(user =>{ %> 
+                            <tr id="">
+                                <td><%= user.firstName %> </td>
+                                <td><%= user.lastName %> </td>
+                                <td><%= user.email %> </td>
+                                <td>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modelId<%= user._id %> ">
+                                      view
+                                    </button>
+                                    
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="modelId<%= user._id %>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                    <div class="modal-header">
+                                                            <h5 class="modal-title font-weight-bold"><%= user.lastName %> Details</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                        </div>
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="card ">
+                                                                <div class="card-body">
+                                                                    <%= user.firstName %>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="card ">
+                                                                <div class="card-body">
+                                                                    <%= user.lastName %>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-5">
+                                                            <div class="card ">
+                                                                <div class="card-body">
+                                                                    <%= user.displayName %>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-7">
+                                                            <div class="card ">
+                                                                <div class="card-body">
+                                                                    <%= user.email %>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <script>
+                                        $('#exampleModal').on('show.bs.modal', event => {
+                                            var button = $(event.relatedTarget);
+                                            var modal = $(this);
+                                            // Use above variables to manipulate the DOM
+                                            
+                                        });
+                                    </script>
+                                </td>
+                                <td>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-dark btn-sm" data-toggle="modal" data-target="#EmodelId<%=user.id%>">
+                                      edit
+                                    </button>
+                                    
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="EmodelId<%=user.id%>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Edit <%= user.displayName %> Details</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                <div class="modal-body">
+                                                    <form action="/admin/editUser/<%= user._id %>?_method=PUT " method="POST">
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <div class="input-field">
+                                                                    <input type="text" name="firstName" value="<%= user.firstName %> ">
+                                                                    <label for="Firstname">Firstname</label>
+                                                                </div>                                    
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <div class="input-field">
+                                                                    <input type="text" name="lastName" value="<%= user.lastName %> ">
+                                                                    <label for="Lastname">Lastname</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <input type="email" name="email" value="<%= user.email %> ">
+                                                            <label for="Email">Email</label>
+                                                        </div>
+                                                        <div class="input-field">
+                                                            <input type="text" name="displayName" value="<%= user.displayName %> ">
+                                                            <label for="Username">Username</label>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <div class="input-field">
+                                                                    <input type="text" name="password">
+                                                                    <label for="Password">Password</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <button class="btn btn-block black waves-effect white-text">Update</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <script>
+                                        $('#exampleModal').on('show.bs.modal', event => {
+                                            var button = $(event.relatedTarget);
+                                            var modal = $(this);
+                                            // Use above variables to manipulate the DOM
+                                            
+                                        });
+                                    </script>
+                                </td>
+                                <td>
+                                    <form action="/admin/delUser/<%= user._id%>?_method=DELETE" method="POST">
+                                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <% }) %> 
+                    <% }else{ %> 
+                        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                <span class="sr-only">Close</span>
+                            </button>
+                            <strong>No User Available Yet!!!</strong>
+                        </div>
+                    <% } %> 
+                </tbody>
+            </table>
+            
+        </div>
+    </div>
+    <script src="/bootstrap/js/Jquery.js"></script>
+    <script src="/bootstrap/js/bootstrap.js"></script>
+    <script src="/materialize/js/materialize.min.js"></script>
+    <script src="/materialize/js/script.js"></script>
+    <script src="/lightbox2-2.11.3/dist/js/lightbox.js"></script>
+</body>
+</html>

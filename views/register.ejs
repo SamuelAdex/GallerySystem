@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Auth</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../materialize/css/style.css">
+    <link rel="stylesheet" href="../materialize/css/materialize.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+</head>
+<style>
+    .login a{
+        text-decoration: none;
+        color: black;
+    }
+</style>
+<body>
+    <div class="container mt-xl-2">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-content center-align login">
+                        <h1><a href="/">AduksGallery</a></h1>
+                        <div class="card-title"><b><strong>Get Started</strong></b></div>
+                        <div class="divider"></div><br>                        
+                        <a href="/auth/google" class="btn-small btn-block waves-effect grey darken-3 white-text"> Register With <i class="fa fa-google-plus"></i></a><br>
+                        <%- include('./partials/message.ejs') %> 
+                        <div class="divider"></div>
+                        <i class="fab fa-or"></i>Or Register Manually
+                        <form action="/user/register" method="POST">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="input-field">
+                                        <input type="text" name="firstName">
+                                        <label for="Firstname">Firstname</label>
+                                    </div>                                    
+                                </div>
+                                <div class="col-6">
+                                    <div class="input-field">
+                                        <input type="text" name="lastName">
+                                        <label for="Lastname">Lastname</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="input-field">
+                                <input type="email" name="email">
+                                <label for="Email">Email</label>
+                            </div>
+                            <div class="input-field">
+                                <input type="text" name="displayName">
+                                <label for="Username">Username</label>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="input-field">
+                                        <input type="password" name="password">
+                                        <label for="Password">Password</label>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="input-field">
+                                        <input type="password" name="password1">
+                                        <label for="Password1">Confirm Password</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-block pink darken-4 waves-effect white-text">Register</button>
+                        </form>
+                        <p>Already have an account? <a href="/user/login" class="pink-text text-darken-3 mt-5">Login </a> here</p>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+
+    <script src="../materialize/js/Jquery.js"></script>
+    <script src="../materialize/js/materialize.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <script src="../materialize/js/script.js"></script>
+</body>
+</html>

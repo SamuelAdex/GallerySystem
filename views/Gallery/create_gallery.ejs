@@ -1,0 +1,81 @@
+<%- include('../partials/header.ejs') %> 
+
+    <div class="container mt-3">
+        <h2>Create New Gallery</h2>
+        <div class="divider"></div>
+
+        <%- include('../partials/message.ejs') %> 
+        
+               
+        <br><blockquote class="">
+            Click on the Gallery name to edit <b>🙂</b>
+        </blockquote>
+
+        <div class="gallery">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-content center-align">
+                            <form action="/gallery/createGallery" method="POST">
+                                <div class="input-field">                                    
+                                    <input type="text" class="" name="galleryName">
+                                    <label for="Gallery">Gallery Name</label>
+                                </div>
+                                <button class="btn btn-block waves-effect pink darken-3 white-text">Create</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">                        
+                        <div class="card-content">
+                            <hr>
+                            <div class="card-title"><b>My Galleries</b></div>
+                            <% if(galleries.length > 0){ %>
+                                <% galleries.forEach((gallery) => {%>
+                                    <blockquote class="clearfix">
+                                        <a href="/gallery/gallery/<%= gallery.slug %>" class="black-text" style="text-decoration: none;"><%= gallery.galleryName %></a>
+                                                                               
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="modelId<%= gallery.slug %>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                        <div class="modal-header">
+                                                                <h5 class="modal-title font-weight-bolder">Edit <%= gallery.galleryName %> Gallery</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                            </div>
+                                                    <div class="modal-body">
+                                                        <form action="/gallery/editGallery/<%= gallery._id %>?_method=PUT " method="POST">
+                                                            <div class="row">
+                                                                <div class="col-12">
+                                                                    <div class="input-field">
+                                                                        <input type="text" name="galleryName" value="<%= gallery.galleryName %> ">
+                                                                        <label for="Gallery">Gallery</label>
+                                                                    </div>                                    
+                                                                </div>
+                                                            </div>
+                                                            <button type="submit" class="btn btn-block pink darken-3 waves-effect white-text">Update</button>
+                                                        </form>
+                                                    </div>                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        
+                                        <form action="/gallery/delGallery/<%= gallery._id %> " class="float-right">
+                                            <a href="" class="btn btn-sm btn-info" data-toggle="modal" data-target="#modelId<%= gallery.slug %>">✎</a>                                          
+                                            <button class="btn btn-sm pink darken-1 text-white font-weight-bolder">✖</button>
+                                        </form>
+                                    </blockquote>
+                                <% }) %>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<%- include('../partials/footer.ejs') %>
